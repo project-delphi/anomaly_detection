@@ -8,18 +8,18 @@ test:
 	pytest tests/ --cov=anomaly_detection --cov-report=term-missing -v
 
 lint:
-	black --check anomaly_detection/ tests/
-	isort --check-only anomaly_detection/ tests/
+	black --check .
+	isort --check-only .
 
 format:
-	black anomaly_detection/ tests/
-	isort anomaly_detection/ tests/
+	black .
+	isort .
 
 check-format:
-	black --check anomaly_detection/ tests/
+	black --check .
 
 check-imports:
-	isort --check-only anomaly_detection/ tests/
+	isort --check-only .
 
 clean:
 	find . -type d -name "__pycache__" -exec rm -r {} +
