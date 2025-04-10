@@ -38,11 +38,4 @@ jobs:
 
       - name: Run tests with coverage
         run: |
-          pytest tests/ --cov=anomaly_detection --cov-report=xml -v
-
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
-        with:
-          file: ./coverage.xml
-          fail_ci_if_error: true
-          token: ${{ secrets.CODECOV_TOKEN }}
+          pytest tests/ --cov=anomaly_detection -v
