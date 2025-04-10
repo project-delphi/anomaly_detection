@@ -1,25 +1,28 @@
-.PHONY: install test lint format check-format check-imports clean
+.PHONY: install test lint format check-format check-imports clean setup-pre-commit
 
 install:
 	pip install -e .
-	pip install pytest pytest-cov black isort
+	pip install pytest pytest-cov black isort pre-commit
+
+setup-pre-commit:
+	pre-commit install
 
 test:
 	pytest tests/ --cov=anomaly_detection --cov-report=term-missing -v
 
 lint:
-	black --check anomaly_detection/ tests/
-	isort --check-only anomaly_detection/ tests/
+	black --check .
+	isort --check-only .
 
 format:
-	black anomaly_detection/ tests/
-	isort anomaly_detection/ tests/
+	black .
+	isort .
 
 check-format:
-	black --check anomaly_detection/ tests/
+	black --check .
 
 check-imports:
-	isort --check-only anomaly_detection/ tests/
+	isort --check-only .
 
 clean:
 	find . -type d -name "__pycache__" -exec rm -r {} +
@@ -32,4 +35,4 @@ clean:
 	find . -type d -name ".pytest_cache" -exec rm -r {} +
 	find . -type d -name ".coverage" -exec rm -r {} +
 	find . -type d -name "htmlcov" -exec rm -r {} +
-	find . -type f -name "coverage.xml" -delete 
+	find . -type f -name "coverage.xml" -delete
