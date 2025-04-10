@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
 
 setup(
     name="anomaly_detection",
@@ -16,4 +16,4 @@ setup(
         "pytest-cov>=2.12.0",
     ],
     python_requires=">=3.8",
-) 
+)
